@@ -61,7 +61,7 @@ setup(
     author='Luiz Menezes',
     author_email='luiz.menezesf@gmail.com',
     license='MIT',
-    long_description=open('README.rst').read(),
+    long_description='\n' + readme,
     packages=find_packages(exclude=['tests*']),
     classifiers=[
         'Development Status :: 3 - Alpha',

@@ -38,7 +38,8 @@ Now your can handle your hash like a ``dict``:
     >> len(redis_hash)
     1
     >>> for k, v in redis_hash:
-            print(k, v)
+    ...     print(k, v)
+    ...
     foo bar
     >>> redis_hash['foo']
     b'bar'
