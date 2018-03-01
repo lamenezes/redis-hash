@@ -48,7 +48,7 @@ def test_redis_hash(redis_hash):
     assert redis_hash['bar'] == b'barz'
     assert len(redis_hash) == 2
 
-    assert list(redis_hash) == [(b'foo', b'fooz'), (b'bar', b'barz')]
+    assert set(redis_hash) == set([(b'foo', b'fooz'), (b'bar', b'barz')])
 
     del redis_hash['bar']
     assert len(redis_hash) == 1
