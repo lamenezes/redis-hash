@@ -8,10 +8,9 @@ name = "pypi"
 [packages]
 
 
-
 [dev-packages]
 
 ipdb = "*"
 "flake8" = "*"
 pytest = "*"
-"pytest-cov" = "*"
+pytest-cov = "*"

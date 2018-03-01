@@ -54,10 +54,10 @@ class UploadCommand(Command):
 
 
 setup(
-    name='redish_hash',
+    name='redis_hash',
     version='0.1.0',
     description='Hash interface for redis-py',
-    url='https://github.com/lamenezes/redish-hash',
+    url='https://github.com/lamenezes/redis-hash',
     author='Luiz Menezes',
     author_email='luiz.menezesf@gmail.com',
     license='MIT',
