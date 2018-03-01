@@ -9,7 +9,7 @@ Installation
 
 .. code:: bash
 
-    pip install redis-hash
+    pip install redis_hash
 
 
 Usage

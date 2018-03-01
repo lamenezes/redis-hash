@@ -54,7 +54,7 @@ class UploadCommand(Command):
 
 
 setup(
-    name='redis_hash',
+    name='redis-hash',
     version='0.1.0',
     description='Hash interface for redis-py',
     url='https://github.com/lamenezes/redis-hash',
