@@ -8,7 +8,7 @@ class RedisHash(MutableMapping):
 
     def __repr__(self):
         return '{}(hash_name={!r}, host={host!r}, port={port}, db={db}'.format(
-            type(self).__name__, self._hash_name, **self._client.connection_pool.connection_kwargs,
+            type(self).__name__, self._hash_name, **self._client.connection_pool.connection_kwargs
         )
 
     def __getitem__(self, key):

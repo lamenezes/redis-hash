@@ -9,10 +9,10 @@ python:
 install:
     - pip install pipenv
     - pipenv install --dev
-    - pipenv install coveralls
+    - pipenv install coveralls --skip-lock
 
 before_script:
-    - pipenv run flake8 --ignore=E501 simple_model
+    - pipenv run flake8 --ignore=E501 redis_hash
 
 script:
     - pipenv run py.test --cov=redis_hash --cov-report=term-missing
