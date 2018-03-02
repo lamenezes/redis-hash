@@ -12,7 +12,7 @@ redis-hash
     :target: https://coveralls.io/github/lamenezes/redis-hash?branch=master
 
 
-Hash interface for redis-py
+Simple python interface for redis hash type
 
 Installation
 ============
@@ -47,6 +47,8 @@ Now your can handle your hash like a ``dict``:
     >> redis_hash['foo'] = 'bar'
     >> len(redis_hash)
     1
+    >> 'foo' in redis_hash
+    True
     >>> for k, v in redis_hash:
     ...     print(k, v)
     ...
@@ -58,3 +60,5 @@ Now your can handle your hash like a ``dict``:
     >> del redis_hash['foo']
     >> len(redis_hash)
     0
+    >> 'foo' in redis_hash
+    False
