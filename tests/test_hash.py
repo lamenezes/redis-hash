@@ -12,7 +12,10 @@ class FakeRedisClient:
         self.connection_pool = mock.Mock(connection_kwargs=kwargs)
 
     def hget(self, hash_name, key):
-        return self._store[key].encode('utf-8')
+        try:
+            return self._store[key].encode('utf-8')
+        except KeyError:
+            return None
 
     def hset(self, hash_name, key, value):
         self._store[key] = value
