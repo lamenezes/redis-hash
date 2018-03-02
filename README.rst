@@ -2,6 +2,16 @@
 redis-hash
 ==========
 
+.. image:: https://badge.fury.io/py/redis-hash.svg
+    :target: https://badge.fury.io/py/redis-hash
+
+.. image:: https://travis-ci.org/lamenezes/redis-hash.svg?branch=master
+    :target: https://travis-ci.org/lamenezes/redis-hash
+
+.. image:: https://coveralls.io/repos/github/lamenezes/redis-hash/badge.svg?branch=master
+    :target: https://coveralls.io/github/lamenezes/redis-hash?branch=master
+
+
 Hash interface for redis-py
 
 Installation
