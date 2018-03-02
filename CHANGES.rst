@@ -2,6 +2,12 @@
 Changes
 =======
 
+0.1.0 / 2018-03-02
+==================
+
+* Use HLEN for len() and HEXISTS for contains
+* Properly raises KeyError when trying to access or delete inexistent keys
+
 0.0.2 / 2018-03-01
 ==================
 
