@@ -1,43 +1,17 @@
 from unittest import mock
 
 import pytest
+from fakeredis import FakeStrictRedis
 
 from redis_hash import RedisHash
 
 
-class FakeRedisClient:
-    def __init__(self):
-        self._store = {}
-        kwargs = {'host': 'host', 'port': '6969', 'db': 0}
-        self.connection_pool = mock.Mock(connection_kwargs=kwargs)
-
-    def hget(self, hash_name, key):
-        try:
-            return self._store[key].encode('utf-8')
-        except KeyError:
-            return None
-
-    def hset(self, hash_name, key, value):
-        self._store[key] = value
-
-    def hdel(self, hash_name, key):
-        try:
-            del self._store[key]
-            return 1
-        except KeyError:
-            return 0
-
-    def hscan_iter(self, hash_name):
-        for k, v in self._store.items():
-            yield k.encode('utf-8'), v.encode('utf-8')
-
-    def hlen(self, hash_name):
-        return len(self._store)
-
-
 @pytest.fixture
 def redis_hash():
-    return RedisHash(FakeRedisClient(), 'hashish')
+    fake_redis = FakeStrictRedis()
+    kwargs = {'host': 'host', 'port': '6969', 'db': 0}
+    fake_redis.connection_pool = mock.Mock(connection_kwargs=kwargs)
+    return RedisHash(fake_redis, 'hashish')
 
 
 @pytest.fixture
@@ -53,14 +27,14 @@ def test_redis_hash(redis_hash):
 
     assert len(redis_hash) == 0
     redis_hash['foo'] = 'fooz'
-    assert redis_hash['foo'] == b'fooz'
+    assert redis_hash['foo'] == 'fooz'
     assert len(redis_hash) == 1
 
     redis_hash['bar'] = 'barz'
-    assert redis_hash['bar'] == b'barz'
+    assert redis_hash['bar'] == 'barz'
     assert len(redis_hash) == 2
 
-    assert set(redis_hash) == set([(b'foo', b'fooz'), (b'bar', b'barz')])
+    assert set(redis_hash) == {'foo', 'bar'}
 
     del redis_hash['bar']
     assert len(redis_hash) == 1
