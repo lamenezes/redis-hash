@@ -2,6 +2,11 @@
 Changes
 =======
 
+1.0.1 / 2018-03-15
+==================
+
+* Fix RedisHash.clear_keys() on python 3.3: force dict keys conversion to set
+
 1.0.0 / 2018-03-15
 ==================
 
