@@ -36,7 +36,7 @@ class RedisHash(MutableMapping):
 
     def clear_keys(self, keys):
         keys = set(keys)
-        if keys - self.keys():
+        if keys - set(self.keys()):
             raise KeyError()
 
         for key in keys:
