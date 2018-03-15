@@ -26,11 +26,18 @@ class RedisHash(MutableMapping):
             raise KeyError(key)
 
     def __iter__(self):
-        for key, value in self._client.hscan_iter(self._hash_name):
-            yield key.decode(), value.decode()
+        return (key.decode() for key in self._client.hkeys(self._hash_name))
 
     def __len__(self):
         return self._client.hlen(self._hash_name)
 
     def __contains__(self, key):
         return self._client.hexists(self._hash_name, key)
+
+    def clear_keys(self, keys):
+        keys = set(keys)
+        if keys - self.keys():
+            raise KeyError()
+
+        for key in keys:
+            del self[key]

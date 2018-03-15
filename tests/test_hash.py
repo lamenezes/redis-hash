@@ -63,3 +63,18 @@ def test_redis_hash_len(mock_redis_hash):
     assert len(mock_redis_hash)
 
     mock_redis_hash._client.hlen.assert_called_with(mock_redis_hash._hash_name)
+
+
+def test_redis_hash_clear_keys(redis_hash):
+    redis_hash['foo'] = 'foo'
+    redis_hash['bar'] = 'bar'
+    redis_hash['baz'] = 'baz'
+
+    redis_hash.clear_keys([])
+    assert dict(redis_hash) == {'foo': 'foo', 'bar': 'bar', 'baz': 'baz'}
+
+    redis_hash.clear_keys(['foo', 'bar'])
+    assert dict(redis_hash) == {'baz': 'baz'}
+
+    with pytest.raises(KeyError):
+        redis_hash.clear_keys(['baz', 'dcg'])
