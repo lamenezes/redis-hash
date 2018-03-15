@@ -15,7 +15,7 @@ class RedisHash(MutableMapping):
         value = self._client.hget(self._hash_name, key)
         if value is None:
             raise KeyError(key)
-        return value
+        return value.decode()
 
     def __setitem__(self, key, value):
         self._client.hset(self._hash_name, key, value)
@@ -26,7 +26,8 @@ class RedisHash(MutableMapping):
             raise KeyError(key)
 
     def __iter__(self):
-        return self._client.hscan_iter(self._hash_name)
+        for key, value in self._client.hscan_iter(self._hash_name):
+            yield key.decode(), value.decode()
 
     def __len__(self):
         return self._client.hlen(self._hash_name)
