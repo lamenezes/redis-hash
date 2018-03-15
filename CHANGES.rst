@@ -2,7 +2,7 @@
 Changes
 =======
 
-1.0.0 / 2018-03-02
+1.0.0 / 2018-03-15
 ==================
 
 * Convert redis values from binary to string
