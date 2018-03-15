@@ -7,13 +7,12 @@ name = "pypi"
 
 [packages]
 
-twine = "*"
-
 
 [dev-packages]
 
-ipdb = "*"
 "flake8" = "*"
+fakeredis = "*"
+ipdb = "*"
 pytest = "*"
 pytest-cov = "*"
-fakeredis = "*"
+twine = "*"
