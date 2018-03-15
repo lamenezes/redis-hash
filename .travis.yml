@@ -7,7 +7,7 @@ python:
   - "3.6"
 
 install:
-    - pip install pipenv
+    - pip install pipenv==11.1.4
     - pipenv install --dev
     - pipenv install coveralls --skip-lock
 
